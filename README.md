@@ -37,7 +37,7 @@ _Descripción del problema._
 ### Cómo correr la API 🔧
 
 1. Cloná el repositorio
-2. Arránca el servidor de MySQL
+2. Arrancá el servidor de MySQL
 3. Corré la consola de MySQL
 4. Crea el schema en la Base de Datos
 5. Entrá al archivo `application.properties` y configurá los siguientes datos con los tuyos:
@@ -147,7 +147,7 @@ _Descripción del uso de los EndPoints de la API._
         }
   ```
   
-#### 4.Endpoint que permite obtener el historial de compras realizadas
+#### 4. Endpoint que permite obtener el historial de compras realizadas
 
 *	Ejemplo del GET:
 `http://127.0.0.1:8080/apiAdtomic/compras`

@@ -63,63 +63,7 @@ _Descripción del problema._
 
 ## Uso 📦
 
-_Descripción del uso de los EndPoints de la API._
-
-#### 1. Endpoint que permite saber, dada una fecha en particular, la mejor opción de compras futuras combinando los 3 productos deseados y el monto total mismo:
-
-* Ejemplo del GET:
-`http://127.0.0.1:8080/apiAdtomic/partes?date=18-05-2019`  (Utilizar formato: dd-MM-yyyy)
-
-* Ejemplo de la respuesta:
-  ```
-    {
-            "Óptica delantera derecha": {
-                "proveedor": "Good Repair",
-                "monto": 6100.0,
-                "metodo_pago": "TODOS"
-            },
-            "fecha": "18-05-2019",
-            "Paragolpe delantero": {
-                "proveedor": "AutosAr",
-                "monto": 6460.0,
-                "metodo_pago": "EFECTIVO"
-            },
-            "monto": 16980.0,
-            "Parrilla frontal": {
-                "proveedor": "AutosAr",
-                "monto": 4420.0,
-                "metodo_pago": "EFECTIVO"
-            }
-        }
-  ```
-#### 2. Endpoint que permite saber, dado un mes y un año en particular, la mejor opcion de compra (día) para los 3 productos deseados y el monto total mismo:
-
-*	Ejemplo del GET:
-`http://127.0.0.1:8080/apiAdtomic/partes?date=05-2019`  (Utilizar formato: MM-yyyy)
-
-* Ejemplo de la respuesta:
-  ```
-    {
-            "Óptica delantera derecha": {
-                "proveedor": "Good Repair",
-                "monto": 6100.0,
-                "metodo_pago": "TODOS"
-            },
-            "fecha": "18-05-2019",
-            "Paragolpe delantero": {
-                "proveedor": "AutosAr",
-                "monto": 6460.0,
-                "metodo_pago": "EFECTIVO"
-            },
-            "monto": 16980.0,
-            "Parrilla frontal": {
-                "proveedor": "AutosAr",
-                "monto": 4420.0,
-                "metodo_pago": "EFECTIVO"
-            }
-        }
-  ```
-#### 3. Endpoint que permite guardar en base de datos una compra
+### _Descripción de los códigos_
 
 ###### Códigos de proveedores
 * AUTOS_AR("AutosAr")
@@ -137,8 +81,82 @@ _Descripción del uso de los EndPoints de la API._
 * EFECTIVO
 * TODOS
 
-###### Ejemplos
+### _Descripción del uso de los EndPoints de la API._
 
+#### 1. Endpoint que permite saber, dada una fecha en particular, la mejor opción de compras futuras combinando los 3 productos deseados y el monto total mismo:
+###### Parámetros
+
+###### RequestBody
+
+###### Errores
+
+###### Ejemplos
+* Ejemplo del GET:
+`http://127.0.0.1:8080/apiAdtomic/partes?date=18-05-2019`  (Utilizar formato: dd-MM-yyyy)
+
+* Ejemplo de la respuesta:
+  ```
+	{
+	    "fecha": "18-05-2019",
+	    "monto": 16980.0,
+	    "PARAGOLPE_DELANTERO": {
+		"proveedor": "AUTOS_AR",
+		"monto": 6460.0,
+		"metodo_pago": "EFECTIVO"
+	    },
+	    "PARRILLA_FRONTAL": {
+		"proveedor": "AUTOS_AR",
+		"monto": 4420.0,
+		"metodo_pago": "EFECTIVO"
+	    },
+	    "DELANTERA_DERECHA": {
+		"proveedor": "GOOD_REPAIR",
+		"monto": 6100.0,
+		"metodo_pago": "TODOS"
+	    }
+	}
+  ```
+#### 2. Endpoint que permite saber, dado un mes y un año en particular, la mejor opcion de compra (día) para los 3 productos deseados y el monto total mismo:
+###### Parámetros
+
+###### RequestBody
+
+###### Errores
+
+###### Ejemplos
+*	Ejemplo del GET:
+`http://127.0.0.1:8080/apiAdtomic/partes?date=05-2019`  (Utilizar formato: MM-yyyy)
+
+* Ejemplo de la respuesta:
+  ```
+	{
+	    "fecha": "18-05-2019",
+	    "monto": 16980.0,
+	    "PARAGOLPE_DELANTERO": {
+		"proveedor": "AUTOS_AR",
+		"monto": 6460.0,
+		"metodo_pago": "EFECTIVO"
+	    },
+	    "PARRILLA_FRONTAL": {
+		"proveedor": "AUTOS_AR",
+		"monto": 4420.0,
+		"metodo_pago": "EFECTIVO"
+	    },
+	    "DELANTERA_DERECHA": {
+		"proveedor": "GOOD_REPAIR",
+		"monto": 6100.0,
+		"metodo_pago": "TODOS"
+	    }
+	}
+  ```
+#### 3. Endpoint que permite guardar en base de datos una compra
+###### Parámetros
+
+###### RequestBody
+
+###### Errores
+
+###### Ejemplos
 * Ejemplo del POST:
 `http://127.0.0.1:8080/apiAdtomic/compras`
 
@@ -209,31 +227,54 @@ _Descripción del uso de los EndPoints de la API._
 	}
   ```
 #### 4. Endpoint que permite obtener el historial de compras realizadas
+###### Parámetros
 
+###### RequestBody
+
+###### Errores
+
+###### Ejemplos
 * Ejemplo del GET:
 `http://127.0.0.1:8080/apiAdtomic/compras`
 
-* Ejemplo de la respuesta:
+* Ejemplo de la respuesta (una compra realizada):
   ```
-    {
-            "Óptica delantera derecha": {
-                "proveedor": "Good Repair",
-                "monto": 6100.0,
-                "metodo_pago": "TODOS"
-            },
-            "fecha": "18-05-2019",
-            "Paragolpe delantero": {
-                "proveedor": "AutosAr",
-                "monto": 6460.0,
-                "metodo_pago": "EFECTIVO"
-            },
-            "monto": 16980.0,
-            "Parrilla frontal": {
-                "proveedor": "AutosAr",
-                "monto": 4420.0,
-                "metodo_pago": "EFECTIVO"
-            }
-        }
+  	{
+	    "monto": 16980.0,
+	    "fechaCompra": "05-05-2020",
+	    "itemsCompra": [
+		{
+		    "proveedor": "BUENOS_AIRES_CARS",
+		    "metodoPago": "TODOS",
+		    "parte": {
+			"descripcionParte": "DELANTERA_DERECHA",
+			"tipoParte": "OPTICA",
+			"precioInicial": 6100.0
+		    },
+		    "monto": 6100.0
+		},
+		{
+		    "proveedor": "AUTOS_AR",
+		    "metodoPago": "EFECTIVO",
+		    "parte": {
+			"descripcionParte": "PARAGOLPE_DELANTERO",
+			"tipoParte": "CARROCERIA",
+			"precioInicial": 7600.0
+		    },
+		    "monto": 6460.0
+		},
+		{
+		    "proveedor": "AUTOS_AR",
+		    "metodoPago": "EFECTIVO",
+		    "parte": {
+			"descripcionParte": "PARRILLA_FRONTAL",
+			"tipoParte": "CARROCERIA",
+			"precioInicial": 5200.0
+		    },
+		    "monto": 4420.0
+		}
+	    ]
+	}
   ```
 
 _Nota: para correr las consultas a la API utilicé Postman (https://www.postman.com/downloads/)._

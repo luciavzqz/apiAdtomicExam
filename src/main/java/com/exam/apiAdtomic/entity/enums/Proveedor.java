@@ -31,7 +31,7 @@ public enum Proveedor {
 			
 			respuesta.put("monto", monto * porcentajeDeDescuento);
 			respuesta.put("metodo_pago", metodoPago);
-			respuesta.put("proveedor", getNombre());
+			respuesta.put("proveedor", name());
 			
 			return respuesta;
 		}
@@ -60,7 +60,7 @@ public enum Proveedor {
 			
 			respuesta.put("monto", monto * porcentajeDeDescuento);
 			respuesta.put("metodo_pago", metodoPago);
-			respuesta.put("proveedor", getNombre());
+			respuesta.put("proveedor", name());
 			
 			return respuesta;
 		}
@@ -97,7 +97,7 @@ public enum Proveedor {
 			
 			respuesta.put("monto", monto * porcentajeDeDescuento);
 			respuesta.put("metodo_pago", metodoPago);
-			respuesta.put("proveedor", getNombre());
+			respuesta.put("proveedor", name());
 			
 			return respuesta;
 		}

@@ -170,7 +170,7 @@ public class ParteServiceImpl implements ParteService {
 
 			propuesta.put("monto", (Math.floor( monto * 100) / 100d));
 			// Agrego el mapa obtenido al mapa "respuesta" bajo la key "nombre_de_la_parte"
-			respuesta.put(parte.getDescripcionParte().getDescripcion(), propuesta);
+			respuesta.put(parte.getDescripcionParte().name(), propuesta);
 		}
 		
 		// Agrego el price al mapa

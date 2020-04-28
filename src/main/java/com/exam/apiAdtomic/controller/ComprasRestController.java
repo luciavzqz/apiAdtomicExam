@@ -38,37 +38,38 @@ public class ComprasRestController {
 	 * POST
 	 * url: http://127.0.0.1:8080/apiAdtomic/compras
 	 * 
-	 * @param Compra a guardar
+	 * @param detalle de compra a guardar
 	 * @return La compra persistida en la base de datos
 	 *
 	 */
-	 /*
-	 * Ejemplo de RequestBody:
-	 * 
-	 *  {	
-	 *  	"partes": [
-	 *  		{
-	 *  			"parte": "Paragolpe delantero"
-	 *        	  	"proveedor": "AutosAr",
-	 *         		"monto": "6460",
-	 *          	"metodo_pago": "EFECTIVO"
-	 *      	},
-	 *     		{
-	 *     			"parte":"Delantera derecha",
-	 *         		"proveedor": "Good Repair",
-	 *          	"monto": "6100",
-	 *          	"metodo_pago": "TODOS"
-	 *       	},
-	 *      	{
-	 *      		"parte":"Parrilla frontal",
-	 *     			"proveedor": "AutosAr",
-	 *         		"monto": "4420",
-	 *         		"metodo_pago": "EFECTIVO"
-	 *       	}
-	 * 		 ],
-	 *      "monto": "16980",
-	 *  }
+	
+	 /* Ejemplo de RequestBody:
+	
+		{
+		    "monto": 16980.0,
+		    "partes": [
+			    {
+			    	"parte": "DELANTERA_DERECHA",
+			        "proveedor": "BUENOS_AIRES_CARS",
+			        "monto": 6100.0,
+			        "metodo_pago": "TODOS"
+			    },
+			    {
+			    	"parte": "PARAGOLPE_DELANTERO",
+			        "proveedor": "AUTOS_AR",
+			        "monto": 6460.0,
+			        "metodo_pago": "EFECTIVO"
+			    },
+			    {
+			    	"parte":"PARRILLA_FRONTAL",
+			        "proveedor": "AUTOS_AR",
+			        "monto": 4420.0,
+			        "metodo_pago": "EFECTIVO"
+			    }
+		    ]
+		}
 	 */
+	
 	@PostMapping("/compras")
 	public Compra Compra(
 			@RequestBody Map<String, Object> detalleCompra) {

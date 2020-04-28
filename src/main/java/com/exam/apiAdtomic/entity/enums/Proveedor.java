@@ -113,5 +113,6 @@ public enum Proveedor {
         return this.nombre;
     }
 	
+	
 	public abstract Map<String, Object> obtenerMejorDescuento(Date fecha, TipoParte tipoParte, double monto);
 }

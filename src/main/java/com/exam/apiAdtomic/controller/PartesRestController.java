@@ -9,18 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.apiAdtomic.entity.enums.DescripcionParte;
 import com.exam.apiAdtomic.entity.enums.TipoParte;
+import com.exam.apiAdtomic.entity.model.Compra;
 import com.exam.apiAdtomic.entity.model.Parte;
 import com.exam.apiAdtomic.service.ParteService;
 import com.exam.apiAdtomic.utils.Fecha;
 
 @RestController
-@RequestMapping("/apiAdtomic") //esta sera la raiz de la url, es decir http://127.0.0.1:8080/apiAdtomic/
+@RequestMapping("/apiAdtomic") 
 public class PartesRestController {
 	
 	@Autowired
@@ -66,9 +69,10 @@ public class PartesRestController {
 		return new ResponseEntity<>(respuesta, HttpStatus.OK);
 	}
 	
+	
 	/*
 	 * GET
-	 * url: http://127.0.0.1:8080/apiAdtomic/configInicial
+	 * url: http://127.0.0.1:8080/apiAdtomic/configuracionInicial
 	 * 
 	 * Con motivos de este examen.
 	 * @param -
@@ -82,5 +86,8 @@ public class PartesRestController {
 		parteService.save( new Parte(DescripcionParte.PARAGOLPE_DELANTERO, TipoParte.CARROCERIA, 7600));
 		
 	}
-	
+	@PostMapping("/ConfiguraciónInicial")
+	public void configuracionInicial() {
+		
+	}
 }

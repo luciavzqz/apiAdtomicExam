@@ -53,31 +53,35 @@ public class CompraServiceImpl implements CompraService {
 	 * @param Compra a guardar
 	 * @return La compra persistida en la base de datos
 	 *
-	 * Ejemplo de parámetro esperado:
-	 *  {	
-	 *  	"partes": [
-	 *  		{
-	 *  			"parte": "Paragolpe delantero"
-	 *        	  	"proveedor": "AutosAr",
-	 *         		"monto": "6460",
-	 *          	"metodo_pago": "EFECTIVO"
-	 *      	},
-	 *     		{
-	 *     			"parte":"Delantera derecha",
-	 *         		"proveedor": "Good Repair",
-	 *          	"monto": "6100",
-	 *          	"metodo_pago": "TODOS"
-	 *       	},
-	 *      	{
-	 *      		"parte":"Parrilla frontal",
-	 *     			"proveedor": "AutosAr",
-	 *         		"monto": "4420",
-	 *         		"metodo_pago": "EFECTIVO"
-	 *       	}
-	 * 		 ],
-	 *      "monto": "16980",
-	 *  }
 	 */
+
+	 /* Ejemplo de detalleCompra:
+	
+		{
+		    "monto": 16980.0,
+		    "partes": [
+			    {
+			    	"parte": "DELANTERA_DERECHA",
+			        "proveedor": "BUENOS_AIRES_CARS",
+			        "monto": 6100.0,
+			        "metodo_pago": "TODOS"
+			    },
+			    {
+			    	"parte": "PARAGOLPE_DELANTERO",
+			        "proveedor": "AUTOS_AR",
+			        "monto": 6460.0,
+			        "metodo_pago": "EFECTIVO"
+			    },
+			    {
+			    	"parte":"PARRILLA_FRONTAL",
+			        "proveedor": "AUTOS_AR",
+			        "monto": 4420.0,
+			        "metodo_pago": "EFECTIVO"
+			    }
+		    ]
+		}
+	 */
+	
 	@Override
 	public Compra save(Map<String, Object> detalleCompra) {
 		double montoTotal = (double) detalleCompra.get("monto");
@@ -91,6 +95,7 @@ public class CompraServiceImpl implements CompraService {
 			double monto = (double) detalleParte.get("monto");
 			MetodoPago metodoPago = MetodoPago.valueOf((String) detalleParte.get("metodo_pago"));
 			DescripcionParte descripcionParte = DescripcionParte.valueOf((String) detalleParte.get("parte"));
+			
 			Parte parte = parteService.findByDescripcionParte(descripcionParte);
 			itemsCompra.add(new ItemCompra(proveedor, metodoPago, parte, monto));
 		}

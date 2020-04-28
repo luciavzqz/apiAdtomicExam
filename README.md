@@ -121,35 +121,96 @@ _Descripción del uso de los EndPoints de la API._
   ```
 #### 3. Endpoint que permite guardar en base de datos una compra
 
-*	Ejemplo del POST:
+###### Códigos de proveedores
+* AUTOS_AR("AutosAr")
+* BUENOS_AIRES_CARS("Buenos Aires Cars")
+* GOOD_REPAIR("Good Repair")
+
+###### Códigos de las partes de la camioneta
+* DELANTERA_DERECHA("Óptica delantera derecha")
+* PARRILLA_FRONTAL("Parrilla frontal")
+* PARAGOLPE_DELANTERO("Paragolpe delantero")
+
+###### Códigos de los métodos de pago
+* TARJETA_CREDITO
+* TARJETA_DEBITO
+* EFECTIVO
+* TODOS
+
+###### Ejemplos
+
+* Ejemplo del POST:
 `http://127.0.0.1:8080/apiAdtomic/compras`
 
-*	Ejemplo del RequestBody:
+* Ejemplo del RequestBody:
   ```
-    {
-            "Óptica delantera derecha": {
-                "proveedor": "Good Repair",
-                "monto": 6100.0,
-                "metodo_pago": "TODOS"
-            },
-            "fecha": "18-05-2019",
-            "Paragolpe delantero": {
-                "proveedor": "AutosAr",
-                "monto": 6460.0,
-                "metodo_pago": "EFECTIVO"
-            },
-            "monto": 16980.0,
-            "Parrilla frontal": {
-                "proveedor": "AutosAr",
-                "monto": 4420.0,
-                "metodo_pago": "EFECTIVO"
-            }
-        }
+   	{
+	    "monto": 16980.0,
+	    "partes": [
+		    {
+			"parte": "DELANTERA_DERECHA",
+			"proveedor": "BUENOS_AIRES_CARS",
+			"monto": 6100.0,
+			"metodo_pago": "TODOS"
+		    },
+		    {
+			"parte": "PARAGOLPE_DELANTERO",
+			"proveedor": "AUTOS_AR",
+			"monto": 6460.0,
+			"metodo_pago": "EFECTIVO"
+		    },
+		    {
+			"parte":"PARRILLA_FRONTAL",
+			"proveedor": "AUTOS_AR",
+			"monto": 4420.0,
+			"metodo_pago": "EFECTIVO"
+		    }
+	    ]
+	}
   ```
-  
+ 
+* Ejemplo de la respuesta:
+  ```
+	{
+	    "monto": 16980.0,
+	    "fechaCompra": "05-05-2020",
+	    "itemsCompra": [
+		{
+		    "proveedor": "BUENOS_AIRES_CARS",
+		    "metodoPago": "TODOS",
+		    "parte": {
+			"descripcionParte": "DELANTERA_DERECHA",
+			"tipoParte": "OPTICA",
+			"precioInicial": 6100.0
+		    },
+		    "monto": 6100.0
+		},
+		{
+		    "proveedor": "AUTOS_AR",
+		    "metodoPago": "EFECTIVO",
+		    "parte": {
+			"descripcionParte": "PARAGOLPE_DELANTERO",
+			"tipoParte": "CARROCERIA",
+			"precioInicial": 7600.0
+		    },
+		    "monto": 6460.0
+		},
+		{
+		    "proveedor": "AUTOS_AR",
+		    "metodoPago": "EFECTIVO",
+		    "parte": {
+			"descripcionParte": "PARRILLA_FRONTAL",
+			"tipoParte": "CARROCERIA",
+			"precioInicial": 5200.0
+		    },
+		    "monto": 4420.0
+		}
+	    ]
+	}
+  ```
 #### 4. Endpoint que permite obtener el historial de compras realizadas
 
-*	Ejemplo del GET:
+* Ejemplo del GET:
 `http://127.0.0.1:8080/apiAdtomic/compras`
 
 * Ejemplo de la respuesta:

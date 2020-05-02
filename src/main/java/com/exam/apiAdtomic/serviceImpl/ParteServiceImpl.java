@@ -57,12 +57,12 @@ public class ParteServiceImpl implements ParteService {
 	 * @param La fecha de la que se quiere obtener la mejor opción en relación del precio para una compra futura
 	 * @return La mejor opción mapeada de la siguiente forma
 	 * {
-	 *			"Óptica delantera derecha" : {
-	 *				"proveedor": "AutosAR"
-	 *				"monto": 6200.00
-	 *				"metodo_pago" : "EFECTIVO"
-	 *			},
-	 *			"Parrilla frontal": {
+	 *			"PARAGOLPE_DELANTERO": {
+	 *				"proveedor": "AUTOS_AR",
+	 *				"monto": 6460.0,
+	 *				"metodo_pago": "EFECTIVO"
+     *			},
+     *			 "PARRILLA_FRONTAL": {
 	 *			...
 	 *			}
 	 *			"monto": 6899.00,
@@ -83,12 +83,12 @@ public class ParteServiceImpl implements ParteService {
 	 * @param El mes y el año para los que se quiere obtener la mejor opción en relación del precio para una compra futura
 	 * @return La mejor opción mapeada de la siguiente forma
 	 * {
-	 *			"Óptica delantera derecha" : {
-	 *				"proveedor": "AutosAR"
-	 *				"monto": 6200.00
-	 *				"metodo_pago" : "EFECTIVO"
-	 *			},
-	 *			"Parrilla frontal": {
+	 *			"PARAGOLPE_DELANTERO": {
+	 *				"proveedor": "AUTOS_AR",
+	 *				"monto": 6460.0,
+	 *				"metodo_pago": "EFECTIVO"
+     *			},
+     *			 "PARRILLA_FRONTAL": {
 	 *			...
 	 *			}
 	 *			"monto": 6899.00,
@@ -136,12 +136,12 @@ public class ParteServiceImpl implements ParteService {
 	 * @return La opción de compra con mejor descuento, mapeada de la siguiente forma
 	 * 
 	 * {
-	 *			"Óptica delantera derecha" : {
-	 *				"proveedor": "AutosAR"
-	 *				"monto": 6200.00
-	 *				"metodo_pago" : "EFECTIVO"
-	 *			},
-	 *			"Parrilla frontal": {
+	 *			"PARAGOLPE_DELANTERO": {
+	 *				"proveedor": "AUTOS_AR",
+	 *				"monto": 6460.0,
+	 *				"metodo_pago": "EFECTIVO"
+     *			},
+     *			 "PARRILLA_FRONTAL": {
 	 *			...
 	 *			}
 	 *			"monto": 6899.00,
@@ -188,9 +188,9 @@ public class ParteServiceImpl implements ParteService {
 	 * 			el tipo de parte para el que se quiera calcular y el monto de la misma
 	 * @return La mejor opción de proveedor mapeada de la siguiente forma
 	 * 	{
-	 *		"proveedor": "AutosAR"
-	 *		"monto": "6200,00"
-	 *		"metodo_pago" : "efectivo"
+	 *		"proveedor": "AUTOS_AR",
+	 *		"monto": 6460.0,
+	 *		"metodo_pago": "EFECTIVO"
 	 *	}
 	 */
 	private Map<String, Object> obtenerMejorDescuentoParaParte(Date fecha, TipoParte tipoParte, double monto){

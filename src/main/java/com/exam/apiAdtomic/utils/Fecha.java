@@ -1,5 +1,6 @@
 package com.exam.apiAdtomic.utils;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,6 +50,10 @@ public class Fecha {
 		Calendar fecha = Calendar.getInstance();
 	    fecha.set(año, mes, 0);
 	    return fecha.getActualMaximum(Calendar.DAY_OF_MONTH);
+	}
+	
+	public static Timestamp getCurrentTimestamp() {
+		return new Timestamp(System.currentTimeMillis());
 	}
 }
 	

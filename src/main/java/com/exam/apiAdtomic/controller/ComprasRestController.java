@@ -2,7 +2,6 @@ package com.exam.apiAdtomic.controller;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.apiAdtomic.entity.model.Compra;
+import com.exam.apiAdtomic.exceptionHandling.ClientErrorException;
+import com.exam.apiAdtomic.exceptionHandling.ServerErrorException;
 import com.exam.apiAdtomic.service.CompraService;
+import com.exam.apiAdtomic.utils.JsonResponse;
 
 @RestController
 @RequestMapping("/apiAdtomic") //esta sera la raiz de la url, es decir http://127.0.0.1:8080/apiAdtomic/
@@ -20,7 +22,7 @@ public class ComprasRestController {
 	@Autowired
 	private CompraService compraService;
 
-	/*
+	/**
 	 * GET
 	 * url: http://127.0.0.1:8080/apiAdtomic/compras
 	 * 
@@ -34,12 +36,13 @@ public class ComprasRestController {
 	}
 	
 	
-	/*
+	/**
 	 * POST
 	 * url: http://127.0.0.1:8080/apiAdtomic/compras
 	 * 
 	 * @param detalle de compra a guardar
 	 * @return La compra persistida en la base de datos
+	 * @throws ClientErrorException 
 	 *
 	 */
 	
@@ -70,13 +73,29 @@ public class ComprasRestController {
 		}
 	 */
 	
-	@PostMapping("/compras")
-	public Compra Compra(
-			@RequestBody Map<String, Object> detalleCompra) {
+	@PostMapping("/comprass")
+	public void Compra(
+			@RequestBody Map<String, Object> detalleCompra) throws ClientErrorException {
+
+		//JsonResponse jsonResponse = new JsonResponse();
+		 throw new ServerErrorException("Parámetros inválidos. Verifique el formato del RequestBody.");
 		
-		System.out.println(detalleCompra.toString());
-		Compra compra = compraService.save(detalleCompra);
+		   
+//		System.out.println(detalleCompra.toString());
+//		try {
+//			
+//			Compra compra = compraService.save(detalleCompra);
+//			jsonResponse.setTitle("Petición exitosa.");
+//			jsonResponse.setSuccess();
+//			
+//		} catch (Exception e) {
+//		
+//			jsonResponse.setTitle("Error interno del servidor.");
+//			jsonResponse.setDetail("Ha ocurrido un error interno.");
+//			jsonResponse.setInternalServerError();
+//			
+//		}
 		
-		return compra;
+		//return compra;
 	}
 }

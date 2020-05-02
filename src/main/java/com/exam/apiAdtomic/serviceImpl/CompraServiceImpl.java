@@ -84,8 +84,8 @@ public class CompraServiceImpl implements CompraService {
 	
 	@Override
 	public Compra save(Map<String, Object> detalleCompra) {
-		double montoTotal = (double) detalleCompra.get("monto");
 		
+		double montoTotal = (double) detalleCompra.get("monto");
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> detallePartes = (List<Map<String, Object>>) detalleCompra.get("partes");
 		List<ItemCompra> itemsCompra = new ArrayList<ItemCompra>();

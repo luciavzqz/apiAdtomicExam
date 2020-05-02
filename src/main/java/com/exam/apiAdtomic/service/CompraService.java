@@ -15,4 +15,5 @@ public interface CompraService {
 	public void deleteById(int id);
 
 	public Compra save(Map<String, Object> detalleCompra);
+
 }

@@ -75,13 +75,20 @@ public class ComprasRestController {
 	
 	@PostMapping("/compras")
 	public JsonResponse Compra(
-			@RequestBody Map<String, Object> detalleCompra) throws ClientErrorException {
+			@RequestBody(required = false) Map<String, Object> detalleCompra) throws ClientErrorException {
+
+		if(detalleCompra == null)
+			 throw new ClientErrorException("Se espera RequestBody. Verifique el formato del RequestBody.");	
 		
 		Compra compra = null;
 		try {
 			compra = compraService.save(detalleCompra);
-		} catch (Exception e) {
-			 throw new ServerErrorException("Parámetros inválidos. Verifique el formato del RequestBody.");	
+		} catch (ClientErrorException e) {
+			 throw new ClientErrorException(e.getMessage() != null? e.getMessage() : "Parámetros inválidos. Verifique el RequestBody.");	
+		} catch (ServerErrorException e) {
+			 throw new ServerErrorException(e.getMessage());	
+		}catch (Exception e) {
+			 throw new ClientErrorException("Parámetros inválidos. Verifique el RequestBody.");	
 		}
 		
 		return (new JsonResponse(compra.toMap())).setDeaultSuccess();

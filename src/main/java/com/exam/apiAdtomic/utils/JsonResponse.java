@@ -1,5 +1,6 @@
 package com.exam.apiAdtomic.utils;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import org.springframework.http.HttpStatus;
 
 public class JsonResponse {
 
+	private Timestamp timestamp = Fecha.getCurrentTimestamp();
 	private int status;
 	private String title = null;
 	private String message = null;
@@ -59,7 +61,11 @@ public class JsonResponse {
 	public String getTitle() {
 		return title;
 	}
-
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public Map<String, Object> getData() {
 		return data;
 	}
@@ -68,8 +74,12 @@ public class JsonResponse {
 		this.data = data;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public String getMessage() {

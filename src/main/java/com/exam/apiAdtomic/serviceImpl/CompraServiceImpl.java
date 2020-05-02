@@ -49,7 +49,7 @@ public class CompraServiceImpl implements CompraService {
 		compraDAO.deleteById(id);
 	}
 
-	/* 
+	/** 
 	 * @param Compra a guardar
 	 * @return La compra persistida en la base de datos
 	 *
@@ -86,8 +86,10 @@ public class CompraServiceImpl implements CompraService {
 	public Compra save(Map<String, Object> detalleCompra) {
 		
 		double montoTotal = (double) detalleCompra.get("monto");
+		
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> detallePartes = (List<Map<String, Object>>) detalleCompra.get("partes");
+		
 		List<ItemCompra> itemsCompra = new ArrayList<ItemCompra>();
 		
 		for (Map<String, Object> detalleParte : detallePartes) {

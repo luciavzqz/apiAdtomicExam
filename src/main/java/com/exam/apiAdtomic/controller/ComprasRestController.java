@@ -73,29 +73,17 @@ public class ComprasRestController {
 		}
 	 */
 	
-	@PostMapping("/comprass")
-	public void Compra(
+	@PostMapping("/compras")
+	public JsonResponse Compra(
 			@RequestBody Map<String, Object> detalleCompra) throws ClientErrorException {
-
-		//JsonResponse jsonResponse = new JsonResponse();
-		 throw new ServerErrorException("Parámetros inválidos. Verifique el formato del RequestBody.");
 		
-		   
-//		System.out.println(detalleCompra.toString());
-//		try {
-//			
-//			Compra compra = compraService.save(detalleCompra);
-//			jsonResponse.setTitle("Petición exitosa.");
-//			jsonResponse.setSuccess();
-//			
-//		} catch (Exception e) {
-//		
-//			jsonResponse.setTitle("Error interno del servidor.");
-//			jsonResponse.setDetail("Ha ocurrido un error interno.");
-//			jsonResponse.setInternalServerError();
-//			
-//		}
+		Compra compra = null;
+		try {
+			compra = compraService.save(detalleCompra);
+		} catch (Exception e) {
+			 throw new ServerErrorException("Parámetros inválidos. Verifique el formato del RequestBody.");	
+		}
 		
-		//return compra;
+		return (new JsonResponse(compra.toMap())).setDeaultSuccess();
 	}
 }

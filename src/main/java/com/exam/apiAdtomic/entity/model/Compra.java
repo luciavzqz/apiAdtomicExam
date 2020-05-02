@@ -15,10 +15,12 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.exam.apiAdtomic.utils.Mappable;
+
 
 @Entity
 @Table(name="compra")
-public class Compra {
+public class Compra implements Mappable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

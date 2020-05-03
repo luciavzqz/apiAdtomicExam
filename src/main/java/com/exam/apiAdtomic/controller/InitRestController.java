@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.apiAdtomic.service.InitService;
+import com.exam.apiAdtomic.utils.JsonResponse;
 
 @RestController
 @RequestMapping("/apiAdtomic") 
@@ -22,9 +23,11 @@ public class InitRestController {
 	 * @return -
 	 */
 	@PostMapping("/init")
-	public void configuracionInicial(){
+	public JsonResponse configuracionInicial(){
 		
 		initService.init();
+
+		return (new JsonResponse("Ejecución exitosa", "Se han inicializado con éxito los valores iniciales")).setSuccess();
 	}
 	
 }

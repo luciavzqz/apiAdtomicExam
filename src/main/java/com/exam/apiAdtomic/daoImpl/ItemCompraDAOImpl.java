@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.exam.apiAdtomic.dao.ItemCompraDAO;
 import com.exam.apiAdtomic.entity.model.ItemCompra;
-import com.exam.apiAdtomic.entity.model.User;
 
 @Repository
 public class ItemCompraDAOImpl implements ItemCompraDAO{
@@ -53,7 +52,7 @@ public class ItemCompraDAOImpl implements ItemCompraDAO{
 	public void deleteById(int id) {
 		Session currentSession = entityManager.unwrap(Session.class);
 
-		Query<User> query  = currentSession.createQuery("delete from ItemCompra where id=:idItemCompra");
+		Query<ItemCompra> query  = currentSession.createQuery("delete from ItemCompra where id=:idItemCompra");
 		
 		query.setParameter("idItemCompra", id);
 		query.executeUpdate();

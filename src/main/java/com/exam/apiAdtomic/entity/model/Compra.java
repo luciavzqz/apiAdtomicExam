@@ -27,7 +27,7 @@ public class Compra implements Mappable, Serializable {
 	private static final long serialVersionUID = 1017506906048386347L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -39,7 +39,7 @@ public class Compra implements Mappable, Serializable {
 	private Date fechaCompra;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name = "compra_id", referencedColumnName="id")
+    @JoinColumn(name = "compra_id", nullable=false)
 	private List<ItemCompra> itemsCompra = new ArrayList<>();
 	
 	public Compra(double monto, List<ItemCompra> itemsCompra) {

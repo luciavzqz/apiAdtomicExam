@@ -23,7 +23,7 @@ public class ItemCompra implements Serializable{
 	private static final long serialVersionUID = -5233679753720475196L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	

@@ -124,7 +124,7 @@ _Descripción del problema._
 ###### Parámetros
 - date: fecha con formato MM-yyyy
 ###### RequestBody
-- 
+- -
 ###### Ejemplos
 *	Ejemplo del GET:
 `http://127.0.0.1:8080/apiAdtomic/partes?date=05-2019`  (Utilizar formato: MM-yyyy)
@@ -163,25 +163,25 @@ _Descripción del problema._
 ###### RequestBody
 ```
 	{
-	    "monto": 16980.0,
+	    "monto": MONTO,
 	    "partes": [
 		    {
 			"parte": "DELANTERA_DERECHA",
-			"proveedor": "BUENOS_AIRES_CARS",
-			"monto": 6100.0,
-			"metodo_pago": "TODOS"
+			"proveedor": NOMBRE_PROVEEDOR,
+			"monto": MONTO,
+			"metodo_pago": METODO_PAGO
 		    },
 		    {
 			"parte": "PARAGOLPE_DELANTERO",
-			"proveedor": "AUTOS_AR",
-			"monto": 6460.0,
-			"metodo_pago": "EFECTIVO"
+			"proveedor": NOMBRE_PROVEEDOR,
+			"monto": MONTO,
+			"metodo_pago": METODO_PAGO
 		    },
 		    {
 			"parte":"PARRILLA_FRONTAL",
-			"proveedor": "AUTOS_AR",
-			"monto": 4420.0,
-			"metodo_pago": "EFECTIVO"
+			"proveedor": NOMBRE_PROVEEDOR,
+			"monto": MONTO,
+			"metodo_pago": METODO_PAGO
 		    }
 	    ]
 	}
@@ -271,9 +271,9 @@ _Descripción del problema._
   ```
 #### 4. Endpoint que permite obtener el historial de compras realizadas
 ###### Parámetros
--
+- -
 ###### RequestBody
--
+- -
 ###### Ejemplos
 * Ejemplo del GET:
 `http://127.0.0.1:8080/apiAdtomic/compras`

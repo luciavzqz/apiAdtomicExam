@@ -40,7 +40,10 @@ public class ItemCompra implements Serializable{
 	@Column(name="monto")
 	private double monto;
 
-	// Constructores 
+
+	public ItemCompra() {
+		
+	}
 	
 	public ItemCompra(Proveedor proveedor, MetodoPago metodoPago, Parte parte, double monto) {
 		super();
@@ -48,12 +51,7 @@ public class ItemCompra implements Serializable{
 		this.metodoPago = metodoPago;
 		this.parte = parte;
 		this.monto = monto;
-	}
-
-	// Logica
-	
-	// Autogenerados
-	
+	}	
 
 	public int getId() {
 		return id;

@@ -42,6 +42,9 @@ public class Compra implements Mappable, Serializable {
     @JoinColumn(name = "compra_id", nullable=false)
 	private List<ItemCompra> itemsCompra = new ArrayList<>();
 	
+	public Compra() {
+	}
+	
 	public Compra(double monto, List<ItemCompra> itemsCompra) {
 		super();
 		this.monto = monto;

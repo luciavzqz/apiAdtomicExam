@@ -1,5 +1,7 @@
 package com.exam.apiAdtomic.entity.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,10 +22,12 @@ import com.exam.apiAdtomic.utils.Mappable;
 
 @Entity
 @Table(name="compra")
-public class Compra implements Mappable {
+public class Compra implements Mappable, Serializable {
+
+	private static final long serialVersionUID = 1017506906048386347L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
 	
@@ -36,22 +40,33 @@ public class Compra implements Mappable {
 	
 	@OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name = "compra_id", referencedColumnName="id")
-	private List<ItemCompra> itemsCompra;
-
-	// Constructores
+	private List<ItemCompra> itemsCompra = new ArrayList<>();
+	
 	public Compra(double monto, List<ItemCompra> itemsCompra) {
 		super();
 		this.monto = monto;
-		this.itemsCompra = itemsCompra;
+		this.itemsCompra.addAll(itemsCompra);
 	}
 
-	//	Autogenerado
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setFechaCompra(Date fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
+
 	public double getMonto() {
 		return monto;
 	}
 
-	public void setMonto(double monto) {
+	public Compra setMonto(double monto) {
 		this.monto = monto;
+		return this;
 	}
 
 	public Date getFechaCompra() {
@@ -62,8 +77,9 @@ public class Compra implements Mappable {
 		return itemsCompra;
 	}
 
-	public void setItemsCompra(List<ItemCompra> itemsCompra) {
+	public Compra setItemsCompra(List<ItemCompra> itemsCompra) {
 		this.itemsCompra = itemsCompra;
+		return this;
 	}
 	
 }

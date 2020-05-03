@@ -1,5 +1,7 @@
 package com.exam.apiAdtomic.entity.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,7 +17,9 @@ import com.exam.apiAdtomic.entity.enums.TipoParte;
 
 @Entity
 @Table(name="parte")
-public class Parte {
+public class Parte implements Serializable{
+
+	private static final long serialVersionUID = 4519722579219267434L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -44,10 +48,14 @@ public class Parte {
 		this.precioInicial = precioInicial;
 	}
 
-	// Logica
+	public int getId() {
+		return this.id;
+	}
 	
-	// Autogenerados
-	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public DescripcionParte getDescripcionParte() {
 		return descripcionParte;
 	}

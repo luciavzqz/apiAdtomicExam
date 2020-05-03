@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.exam.apiAdtomic.entity.enums.DescripcionParte;
-import com.exam.apiAdtomic.entity.enums.TipoParte;
-import com.exam.apiAdtomic.entity.model.Parte;
 import com.exam.apiAdtomic.exceptionHandling.ClientErrorException;
 import com.exam.apiAdtomic.service.ParteService;
 import com.exam.apiAdtomic.utils.Fecha;
@@ -67,24 +64,6 @@ public class PartesRestController {
 		}
 		
 		return (new JsonResponse(respuesta)).setDeaultSuccess();
-	}
-	
-	
-	/**
-	 * GET
-	 * url: http://127.0.0.1:8080/apiAdtomic/configuracionInicial
-	 * 
-	 * Con motivos de este examen.
-	 * @param -
-	 * @return -
-	 */
-	@GetMapping("/configuraciónInicial")
-	public void configInicial(){
-		
-		parteService.save( new Parte(DescripcionParte.DELANTERA_DERECHA, TipoParte.OPTICA, 6100));
-		parteService.save( new Parte(DescripcionParte.PARRILLA_FRONTAL, TipoParte.CARROCERIA, 5200));
-		parteService.save( new Parte(DescripcionParte.PARAGOLPE_DELANTERO, TipoParte.CARROCERIA, 7600));
-		
 	}
 	
 }

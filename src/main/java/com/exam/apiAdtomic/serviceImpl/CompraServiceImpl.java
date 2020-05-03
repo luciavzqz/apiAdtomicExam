@@ -1,7 +1,6 @@
 package com.exam.apiAdtomic.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -92,7 +91,7 @@ public class CompraServiceImpl implements CompraService {
 
 		Compra compra = null;
 					
-		double montoTotal = (double) detalleCompra.get("monto");
+		double montoTotal = (Double) detalleCompra.get("monto");
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> detallePartes = (List<Map<String, Object>>) detalleCompra.get("partes");
 		
@@ -106,7 +105,7 @@ public class CompraServiceImpl implements CompraService {
 			try {
 				Proveedor proveedor = Proveedor.valueOf((String) detalleParte.get("proveedor"));
 				
-				double monto = (double) detalleParte.get("monto");
+				double monto = (Double) detalleParte.get("monto");
 				
 				MetodoPago metodoPago = MetodoPago.valueOf((String) detalleParte.get("metodo_pago"));
 				
@@ -119,18 +118,21 @@ public class CompraServiceImpl implements CompraService {
 				
 				itemsCompra.add(new ItemCompra(proveedor, metodoPago, parte, monto));
 			} catch (Exception e) {
+				e.printStackTrace();
 				throw new ClientErrorException("El parámetro 'partes' está mal detallado. Verifique el RequestBody.");	
 			}
 		}
 		
-		if(controlPartes.size() != 3)
+		if(controlPartes.size() != 3) {
 			throw new ClientErrorException("El parámetro 'partes' está mal detallado. Verifique el RequestBody.");	
+		}
 		
 		compra = new Compra(montoTotal, itemsCompra);
 		
 		try {
-			//save(compra);
+			save(compra);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ServerErrorException("Error al guardar compra. Intente más tarde");
 		}
 		

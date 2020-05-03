@@ -84,10 +84,13 @@ public class ComprasRestController {
 		try {
 			compra = compraService.save(detalleCompra);
 		} catch (ClientErrorException e) {
+			e.printStackTrace();
 			 throw new ClientErrorException(e.getMessage() != null? e.getMessage() : "Parámetros inválidos. Verifique el RequestBody.");	
 		} catch (ServerErrorException e) {
+			e.printStackTrace();
 			 throw new ServerErrorException(e.getMessage());	
 		}catch (Exception e) {
+			e.printStackTrace();
 			 throw new ClientErrorException("Parámetros inválidos. Verifique el RequestBody.");	
 		}
 		

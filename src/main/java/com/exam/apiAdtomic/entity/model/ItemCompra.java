@@ -1,5 +1,7 @@
 package com.exam.apiAdtomic.entity.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,10 +18,12 @@ import com.exam.apiAdtomic.entity.enums.Proveedor;
 
 @Entity
 @Table(name="item_compra")
-public class ItemCompra {
+public class ItemCompra implements Serializable{
+
+	private static final long serialVersionUID = -5233679753720475196L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
 	
@@ -28,7 +32,7 @@ public class ItemCompra {
 	
 	@Enumerated(EnumType.STRING)
 	private MetodoPago metodoPago;
-	
+
 	@ManyToOne
     @JoinColumn(name = "parte_id", referencedColumnName="id")
 	private Parte parte;
@@ -49,6 +53,15 @@ public class ItemCompra {
 	// Logica
 	
 	// Autogenerados
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public Proveedor getProveedor() {
 		return proveedor;
